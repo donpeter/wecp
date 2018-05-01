@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  node:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGO_URL=mongo
+      - MONGO_DB=rtconn-development
+    volumes:
+          - ../../server:/app
+    networks:
+      - wecp
+    depends_on:
+      - mongo
+    command: ["npm", "run", "watch"]
+
+  mongo:
+    image: mongo:3.7
+    networks:
+      - wecp
+
+networks:
+  wecp:

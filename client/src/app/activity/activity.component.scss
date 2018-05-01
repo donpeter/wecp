@@ -1,0 +1,14 @@
+@import "~bootswatch/dist/superhero/_variables.scss";
+img{
+  height: 200px;
+  width: 100%;
+}
+.price{
+  background-color: $primary;
+  font: {
+    size: 1.2em;
+    weight: bold;
+  };
+  display: inline-block;
+  padding: 2px 5px;
+}

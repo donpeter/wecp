@@ -1,0 +1,17 @@
+<h1>Visit Somewhere New!!!
+  <a class="btn btn-primary btn-lg pull-right" routerLink=":id/admin" role="button">Goto Admin</a>
+</h1>
+<div class="row">
+  <div class="col-md-6" *ngFor="let tour of tours">
+    <div class="card mb-3">
+      <h3 class="card-header">{{tour.location}}</h3>
+      <img [src]="tour.image" [alt]="tour.location" (click)="clicked(tour)" (mouseover)="hovered(tour)">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <div class="card-footer text-right">
+        Cost: <span class="price">{{ tour.cost | currency}}</span>
+      </div>
+    </div>
+  </div>
+</div>
