@@ -1,14 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {RouterModule} from "@angular/router";
-
-import { AppComponent } from './app.component';
-import { AdminComponent } from './admin/admin.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { ActivityComponent } from './activity/activity.component';
-import {ActivityService} from "./shared/activity.service";
-import {HttpClient} from "@angular/common/http";
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {AdminComponent} from './admin/admin.component';
+import {AppRoutingModule} from './app-routing.module';
+import {HomeComponent} from './home/home.component';
+import {ActivityComponent} from './activity/activity.component';
+import {ActivityLoggerService} from "./shared/activity-logger.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -20,9 +18,10 @@ import {HttpClient} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [ActivityService, HttpClient],
+  providers: [ActivityLoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

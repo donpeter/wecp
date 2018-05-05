@@ -1,11 +1,11 @@
-<h1>Activities Logs</h1>
+<h1 class="text-primary mb-4"><strong>{{id | titlecase}}</strong> Activities Admin Logs
+  <a class="btn btn-primary btn-lg pull-right" routerLink="/{{id}}" role="button">Goto Back <</a>
 
+</h1>
+<div class="alert alert-dismissible alert-danger" *ngIf="!activityLogs">
+  <strong>Oh snap!</strong> There is nothing here
+</div>
 <ul>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
-  <li><p>Image 1 was <span class="event">CLICK</span> on <span class="time">May 1st, 2018 : 10:55 Am</span></p></li>
+  <li *ngFor="let log of activityLogs"><p><span class="event text-info">{{log.event}}</span> on <span
+    class="time text-light">{{log.time | date:'medium'}}</span></p></li>
 </ul>

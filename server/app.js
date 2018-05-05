@@ -1,10 +1,8 @@
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const mongoose = require('./config/mongo');
 
 //Import routes
 const activityRoute = require('./routes/activity.route');
@@ -27,7 +25,7 @@ app.use('/', activityRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });

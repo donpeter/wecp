@@ -1,7 +1,10 @@
-export interface Activity {
+export class Activity {
   id: String;
-  logs:[{
-    event: String,
-    time: Date
-  }];
+  logs: ActivityLog[];
+}
+
+export class ActivityLog {
+  _id: String;
+  event: String;
+  time: Date;
 }

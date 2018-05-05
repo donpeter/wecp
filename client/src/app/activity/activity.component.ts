@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Tour} from "./tour";
+import {ActivityLoggerService} from "../shared/activity-logger.service";
+import {ActivityLog} from "../shared/activity";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-activity',
@@ -31,16 +34,38 @@ export class ActivityComponent implements OnInit {
       cost: 1500
     },
   ];
-  constructor() { }
+  public id;
+
+  constructor(private _activityLogger: ActivityLoggerService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    console.log('id ', this.id);
+
   }
   clicked(tour: Tour){
-    console.log(`Clicked ${tour.location}`)
+    console.log(`Clicked ${tour.location}`);
+    const activityLog = new ActivityLog();
+    activityLog.event = `Clicked ${tour.location}`;
+    activityLog.time = new Date();
+    this._activityLogger.saveActivityLog(this.id, activityLog)
+      .subscribe(
+        res => console.log('Activity: ', res),
+        err => console.error('LOG Error: ', err)
+      )
   }
 
   hovered(tour: Tour){
-    console.log(`Hovered ${tour.location}`)
+    console.log(`Hovered ${tour.location}`);
+    const activityLog = new ActivityLog();
+    activityLog.event = `Hovered ${tour.location}`;
+    activityLog.time = new Date();
+    this._activityLogger.saveActivityLog(this.id, activityLog)
+      .subscribe(
+        res => console.log('Activity: ', res),
+        err => console.error('LOG Error: ', err)
+      )
   }
 
 }
