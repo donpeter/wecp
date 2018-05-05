@@ -41,7 +41,6 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    console.log('id ', this.id);
 
   }
   clicked(tour: Tour){
@@ -63,8 +62,8 @@ export class ActivityComponent implements OnInit {
     activityLog.time = new Date();
     this._activityLogger.saveActivityLog(this.id, activityLog)
       .subscribe(
-        res => console.log('Activity: ', res),
-        err => console.error('LOG Error: ', err)
+        res => console.log('Activity Logged: ', res),
+        err => console.error('Activity Log ERROR: ', err)
       )
   }
 

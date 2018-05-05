@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs/Observable";
 import {ActivityLog} from "./activity";
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 
 @Injectable()
 export class ActivityLoggerService {
@@ -25,15 +25,7 @@ export class ActivityLoggerService {
 
   saveActivityLog(id: String, activityLog: ActivityLog): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.post(url, [activityLog])
-      .pipe(
-        tap(res => console.log('Saved: ', res)),
-        catchError(err => {
-          console.log('ERROR: ' + err.message);
-          return err;
-        })
-      )
-
+    return this.http.post(url, [activityLog]);
   }
 
 

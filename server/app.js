@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-
+const db = require('./config/mongo');
 //Import routes
 const activityRoute = require('./routes/activity.route');
 

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const activitySchema = new Schema({
+const activityLogSchema = new Schema({
     id: {
         type: String,
         lowercase: true,
@@ -25,7 +25,7 @@ const activitySchema = new Schema({
     }]
 });
 
-class Activity {
+class ActivityLog {
 
     /*
     * Reverse the Logs when converted to Json object
@@ -35,7 +35,8 @@ class Activity {
         return this._doc;
     }
 }
-activitySchema.loadClass(Activity);
 
-module.exports =   mongoose.model('Activity', activitySchema);
+activityLogSchema.loadClass(ActivityLog);
+
+module.exports = mongoose.model('ActivityLog', activityLogSchema);
 
